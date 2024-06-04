@@ -1,0 +1,55 @@
+// creo la tabla 1
+CREATE TABLE alumno_fragmento_1 (
+    //design las columnas
+    codigo int(5) NOT NULL,
+    cedula varchar(15) DEFAULT NULL,
+    nombres varchar(40) DEFAULT NULL,
+    apellidos varchar(40) DEFAULT NULL,
+    direccion varchar(40) DEFAULT NULL,
+    telefono1 varchar(15) DEFAULT NULL,
+    telefono2 varchar(15) DEFAULT NULL,
+    ciudad varchar(50) DEFAULT NULL,
+    provincia varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+    pais varchar(50) DEFAULT NULL,
+    email varchar(50) DEFAULT NULL,
+    fechanacimiento date DEFAULT NULL,
+    redsocial varchar(15) DEFAULT NULL,
+    carrera varchar(40) DEFAULT NULL,
+    extension varchar(15) DEFAULT NULL,
+    aniograduacion int(4) DEFAULT NULL,
+    PRIMARY KEY (codigo)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+//creo tabla_2
+CREATE TABLE alumno_fragmento_2 (
+    //designo las columnas de tablas 2
+    codigo int(5) NOT NULL,
+    cedula varchar(15) DEFAULT NULL,
+    nombres varchar(40) DEFAULT NULL,
+    apellidos varchar(40) DEFAULT NULL,
+    direccion varchar(40) DEFAULT NULL,
+    telefono1 varchar(15) DEFAULT NULL,
+    telefono2 varchar(15) DEFAULT NULL,
+    ciudad varchar(50) DEFAULT NULL,
+    provincia varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+    pais varchar(50) DEFAULT NULL,
+    email varchar(50) DEFAULT NULL,
+    fechanacimiento date DEFAULT NULL,
+    redsocial varchar(15) DEFAULT NULL,
+    carrera varchar(40) DEFAULT NULL,
+    extension varchar(15) DEFAULT NULL,
+    aniograduacion int(4) DEFAULT NULL,
+    PRIMARY KEY (codigo)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+// instancio de donde  donde quiro cojer el valor
+INSERT INTO alumno_fragmento_1 (codigo, cedula, nombres, apellidos, direccion, telefono1, telefono2, ciudad, provincia, pais, email, fechanacimiento, redsocial, carrera, extension, aniograduacion)
+SELECT codigo, cedula, nombres, apellidos, direccion, telefono1, telefono2, ciudad, provincia, pais, email, fechanacimiento, redsocial, carrera, extension, aniograduacion
+FROM alumno
+WHERE codigo <= 1000;
+
+//intancio el segundo valor de la fila
+INSERT INTO alumno_fragmento_2 (codigo, cedula, nombres, apellidos, direccion, telefono1, telefono2, ciudad, provincia, pais, email, fechanacimiento, redsocial, carrera, extension, aniograduacion)
+SELECT codigo, cedula, nombres, apellidos, direccion, telefono1, telefono2, ciudad, provincia, pais, email, fechanacimiento, redsocial, carrera, extension, aniograduacion
+FROM alumno
+WHERE codigo > 1000;
